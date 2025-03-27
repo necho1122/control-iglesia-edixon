@@ -1,0 +1,117 @@
+.navbarContainer
+{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    z-index: 10;
+    background-color: #222;
+}
+
+.navbar
+{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem 1rem;
+    background-color: #444;
+    border-radius: 50px;
+    margin: 5px;
+}
+
+.navbar ul
+{
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    list-style: none;
+}
+
+.navbar ul li
+{
+    color: aliceblue;
+}
+
+.navbar button
+{
+    border: none;
+    cursor: pointer;
+    color: aliceblue;
+}
+
+/* 🎨 Estilo para el botón Logout */
+.logout
+{
+    background-color: #FF7E8F;
+    padding: 0.5rem 1rem;
+    border-radius: 50px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.logout:hover
+{
+    background-color: #ff5a73;
+    transform: scale(1.05);
+}
+
+.logout:active
+{
+    background-color: #e0465c;
+    transform: scale(0.95);
+}
+
+/* 🎨 Estilo para el botón de barras */
+.bars
+{
+    display: none;
+    background-color: transparent;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.bars:hover
+{
+    transform: rotate(90deg);
+    opacity: 0.8;
+}
+
+.bars:active
+{
+    transform: rotate(180deg);
+    opacity: 0.5;
+}
+
+/* Menú responsivo */
+@media (max-width: 530px)
+{
+    .bars
+    {
+        display: block;
+    }
+
+    .navbar ul
+    {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        right: 10px;
+        background-color: #333;
+        width: 200px;
+        padding: 1rem;
+        border-radius: 10px;
+        transition: all 0.3s ease-in-out;
+    }
+
+    .menuOpen
+    {
+        display: flex !important;
+    }
+
+    .right
+    {
+        display: flex;
+        flex-direction: row;
+        gap: 1rem;
+    }
+}
