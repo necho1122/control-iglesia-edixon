@@ -18,6 +18,8 @@
     background-color: #444;
     border-radius: 50px;
     margin: 5px;
+    max-width: 1020px;
+    margin: 5px auto;
 }
 
 .navbar ul
@@ -31,6 +33,10 @@
 .navbar ul li
 {
     color: aliceblue;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
 }
 
 .navbar button

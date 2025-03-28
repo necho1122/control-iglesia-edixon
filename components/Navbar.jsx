@@ -20,7 +20,7 @@ function Navbar() {
 				<ListItem isVisible={menuOpen} />
 
 				<div className={styles.right}>
-					<button className={styles.logout}>Logout</button>
+					<button className={styles.logout}>Salir</button>
 					<button
 						className={styles.bars}
 						onClick={toggleMenu}

@@ -1,0 +1,45 @@
+.container
+{
+    max-width: 600px;
+    margin: auto;
+    padding: 20px;
+    background: #f8f8f8;
+    border-radius: 10px;
+    margin-top: 70px;
+}
+
+.container h2
+{
+    text-align: center;
+}
+
+.list
+{
+    list-style: none;
+    padding: 0;
+}
+
+.list li
+{
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+.deleteBtn
+{
+    background: #ff4d4d;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: all 0.3s ease-in-out;
+    height: 30px;
+}
+
+.deleteBtn:hover
+{
+    background: #cc0000;
+}
