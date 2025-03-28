@@ -2,12 +2,16 @@
 
 import { useState, useEffect } from 'react';
 import styles from './page.module.css';
+import Link from 'next/link';
 
 export default function Consolidado() {
 	const [ingresos, setIngresos] = useState([]);
 	const [fechaInicio, setFechaInicio] = useState('');
 	const [fechaFin, setFechaFin] = useState('');
-	const [consolidado, setConsolidado] = useState({});
+	const [consolidado, setConsolidado] = useState({
+		VES: { efectivo: 0, transferencia: 0 },
+		USD: { efectivo: 0 },
+	});
 
 	useEffect(() => {
 		async function fetchIngresos() {
@@ -27,7 +31,10 @@ export default function Consolidado() {
 	}, []);
 
 	const calcularConsolidado = (data) => {
-		const resultado = {};
+		const resultado = {
+			VES: { efectivo: 0, transferencia: 0 },
+			USD: { efectivo: 0 },
+		};
 
 		data.forEach(({ cantidad, moneda, tipo, fecha }) => {
 			const date = new Date(fecha).toISOString().split('T')[0];
@@ -36,9 +43,15 @@ export default function Consolidado() {
 				(fechaInicio === '' || date >= fechaInicio) &&
 				(fechaFin === '' || date <= fechaFin)
 			) {
-				const clave = `${moneda}-${tipo}`;
-				if (!resultado[clave]) resultado[clave] = 0;
-				resultado[clave] += cantidad;
+				if (moneda === 'VES') {
+					if (tipo === 'efectivo') {
+						resultado.VES.efectivo += cantidad;
+					} else if (tipo === 'transferencia') {
+						resultado.VES.transferencia += cantidad;
+					}
+				} else if (moneda === 'USD' && tipo === 'efectivo') {
+					resultado.USD.efectivo += cantidad;
+				}
 			}
 		});
 
@@ -54,19 +67,23 @@ export default function Consolidado() {
 			<h2>Consolidado de Ingresos</h2>
 
 			<div className={styles.filtros}>
-				<label>Fecha Inicio:</label>
-				<input
-					type='date'
-					value={fechaInicio}
-					onChange={(e) => setFechaInicio(e.target.value)}
-				/>
+				<div>
+					<label>Desde:</label>
+					<input
+						type='date'
+						value={fechaInicio}
+						onChange={(e) => setFechaInicio(e.target.value)}
+					/>
+				</div>
 
-				<label>Fecha Fin:</label>
-				<input
-					type='date'
-					value={fechaFin}
-					onChange={(e) => setFechaFin(e.target.value)}
-				/>
+				<div>
+					<label>Hasta:</label>
+					<input
+						type='date'
+						value={fechaFin}
+						onChange={(e) => setFechaFin(e.target.value)}
+					/>
+				</div>
 
 				<button onClick={handleFiltrar}>Filtrar</button>
 			</div>
@@ -80,18 +97,28 @@ export default function Consolidado() {
 					</tr>
 				</thead>
 				<tbody>
-					{Object.entries(consolidado).map(([key, total]) => {
-						const [moneda, tipo] = key.split('-');
-						return (
-							<tr key={key}>
-								<td>{moneda}</td>
-								<td>{tipo}</td>
-								<td>{total.toFixed(2)}</td>
-							</tr>
-						);
-					})}
+					{/* Mostrar los valores de VES */}
+					<tr>
+						<td>VES</td>
+						<td>efectivo</td>
+						<td>{consolidado.VES.efectivo.toFixed(2)}</td>
+					</tr>
+					<tr>
+						<td>VES</td>
+						<td>transferencia</td>
+						<td>{consolidado.VES.transferencia.toFixed(2)}</td>
+					</tr>
+
+					{/* Mostrar los valores de USD solo en efectivo */}
+					<tr>
+						<td>USD</td>
+						<td>efectivo</td>
+						<td>{consolidado.USD.efectivo.toFixed(2)}</td>
+					</tr>
 				</tbody>
 			</table>
+
+			<Link href='/finanzas/addFinanza'>Agregar Ingreso</Link>
 		</div>
 	);
 }

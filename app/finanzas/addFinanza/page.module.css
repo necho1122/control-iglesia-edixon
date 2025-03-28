@@ -16,6 +16,12 @@
     margin: 0 auto;
 }
 
+.form h2
+{
+    text-align: center;
+    color: #333;
+}
+
 .field
 {
     display: flex;

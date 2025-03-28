@@ -9,7 +9,7 @@ export default function IngresoForm() {
 	const [cantidad, setCantidad] = useState('');
 	const [descripcion, setDescripcion] = useState('');
 	const [moneda, setMoneda] = useState('USD');
-	const [tipo, setTipo] = useState('cash');
+	const [tipo, setTipo] = useState('efectivo');
 	const [fecha, setFecha] = useState(new Date().toISOString().split('T')[0]);
 
 	const handleSubmit = async (e) => {
@@ -27,7 +27,7 @@ export default function IngresoForm() {
 			setCantidad('');
 			setDescripcion('');
 			setMoneda('USD');
-			setTipo('cash');
+			setTipo('efectivo');
 			setFecha(new Date().toISOString().split('T')[0]);
 
 			alert('Ingreso agregado correctamente');
@@ -43,6 +43,7 @@ export default function IngresoForm() {
 				className={styles.form}
 				onSubmit={handleSubmit}
 			>
+				<h2>Agregar Ingreso</h2>
 				<div className={styles.field}>
 					<label>Cantidad:</label>
 					<input
@@ -80,7 +81,7 @@ export default function IngresoForm() {
 						value={tipo}
 						onChange={(e) => setTipo(e.target.value)}
 					>
-						<option value='cash'>Efectivo</option>
+						<option value='efectivo'>Efectivo</option>
 						<option value='transferencia'>Transferencia</option>
 					</select>
 				</div>
