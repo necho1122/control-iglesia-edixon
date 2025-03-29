@@ -1,0 +1,103 @@
+.container
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 70px;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.container h2
+{
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.container table
+{
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.container th,
+.container td
+{
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: left;
+}
+
+.container th
+{
+    background-color: #4CAF50;
+    color: white;
+    font-weight: bold;
+}
+
+.container tr:nth-child(even)
+{
+    background-color: #f2f2f2;
+}
+
+.container tr:hover
+{
+    background-color: #ddd;
+}
+
+.container td
+{
+    color: #555;
+}
+
+.deleteButton
+{
+    background-color: #ff4d4d;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+}
+
+.deleteButton:hover
+{
+    background-color: #e60000;
+}
+
+.addDonationButton
+{
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    margin-top: 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+}
+
+@media (max-width: 768px)
+{
+    .container table
+    {
+        font-size: 14px;
+    }
+
+    .container th,
+    .container td
+    {
+        padding: 10px;
+    }
+}

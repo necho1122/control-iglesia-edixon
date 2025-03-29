@@ -15,7 +15,7 @@ import Link from 'next/link';
 
 export default function GraficaSemanal() {
 	const [ingresos, setIngresos] = useState([]);
-	const [tasaCambio, setTasaCambio] = useState(0);
+	const [tasaCambio, setTasaCambio] = useState(100);
 
 	useEffect(() => {
 		async function fetchIngresos() {

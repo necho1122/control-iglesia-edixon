@@ -5,13 +5,7 @@ export async function POST(req) {
 		const body = await req.json();
 
 		// Validar datos obligatorios
-		if (
-			!body.cantidad ||
-			!body.descripcion ||
-			!body.fecha ||
-			!body.moneda ||
-			!body.tipo
-		) {
+		if (!body.articulo) {
 			return new Response(
 				JSON.stringify({ message: 'Todos los campos son obligatorios' }),
 				{ status: 400, headers: { 'Content-Type': 'application/json' } }
@@ -19,7 +13,7 @@ export async function POST(req) {
 		}
 
 		// Agregar a Firebase
-		const docRef = await addDoc(collection(db, 'ingresos'), body);
+		const docRef = await addDoc(collection(db, 'articulos'), body);
 
 		return new Response(
 			JSON.stringify({ message: 'Ingreso agregado', id: docRef.id }),

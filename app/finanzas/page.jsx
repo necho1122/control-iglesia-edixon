@@ -64,7 +64,7 @@ export default function Consolidado() {
 
 	return (
 		<div className={styles.container}>
-			<h2>Consolidado de Ingresos</h2>
+			<h4>Consolidado de Ingresos</h4>
 
 			<div className={styles.filtros}>
 				<div>

@@ -14,12 +14,12 @@
 }
 
 /* Títulos */
-.container h2
+.container h4
 {
-    font-size: 2rem;
+    font-size: 1.2rem;
     font-weight: 600;
     color: #333;
-    margin-bottom: 20px;
+    margin-bottom: 40px;
     text-align: center;
 }
 

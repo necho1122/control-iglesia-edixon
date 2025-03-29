@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import styles from './Donation.module.css';
+import Link from 'next/link';
 
 function Donation() {
 	return (
@@ -11,6 +12,10 @@ function Donation() {
 				height={250}
 				alt='donation'
 			/>
+			<div className={styles.links}>
+				<Link href='/donaciones'>Ver donaciones</Link>
+				<Link href='/donaciones/addDonacion'>Agregar donación</Link>
+			</div>
 		</div>
 	);
 }

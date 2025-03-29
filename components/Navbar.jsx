@@ -15,7 +15,12 @@ function Navbar() {
 	return (
 		<div className={styles.navbarContainer}>
 			<nav className={styles.navbar}>
-				<GodIcon />
+				<div className={styles.left}>
+					<GodIcon />
+					<p>
+						<span className={styles.title}>Casa de oración FDNP</span>
+					</p>
+				</div>
 
 				{/* Se oculta en móvil y se muestra con el estado */}
 				<ListItem isVisible={menuOpen} />
