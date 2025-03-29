@@ -71,12 +71,20 @@ export default function DonacionesPage() {
 					))}
 				</tbody>
 			</table>
-			<Link
-				href='/donaciones/addDonacion'
-				className={styles.addDonationButton}
-			>
-				Agregar Donación
-			</Link>
+			<div className={styles.buttonContainer}>
+				<Link
+					href='/donaciones/addDonacion'
+					className={styles.addDonationButton}
+				>
+					Agregar Donación
+				</Link>
+				<Link
+					href='/donaciones/consolidadoDonaciones'
+					className={styles.consolidadoButton}
+				>
+					Ver Consolidado
+				</Link>
+			</div>
 		</div>
 	);
 }

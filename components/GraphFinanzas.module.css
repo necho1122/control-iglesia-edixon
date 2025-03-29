@@ -77,6 +77,8 @@
     color: #333;
 }
 
+
+
 /* Estilos para el gráfico */
 .recharts-tooltip-item
 {
@@ -108,4 +110,28 @@
 {
     background-color: #00bcd4;
     color: #ffffff;
+}
+
+@media (prefers-color-scheme: dark)
+{
+    .input
+    {
+        background-color: #333;
+        color: #fff;
+        border-color: #555;
+    }
+
+    .input:focus
+    {
+        border-color: #00bcd4;
+        box-shadow: 0 0 10px rgba(0, 188, 212, 0.8);
+    }
+
+    .totalDisponible h4
+    {
+        color: #333;
+        /* Light gray for better visibility */
+        background-color: transparent;
+        /* Remove white background */
+    }
 }
