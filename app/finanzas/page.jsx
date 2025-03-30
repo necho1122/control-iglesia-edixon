@@ -118,7 +118,20 @@ export default function Consolidado() {
 				</tbody>
 			</table>
 
-			<Link href='/finanzas/addFinanza'>Agregar Ingreso</Link>
+			<div className={styles.linksContainer}>
+				<Link
+					href='/finanzas/addFinanza'
+					className={styles.link}
+				>
+					Agregar Ingreso
+				</Link>
+				<Link
+					href='/finanzas/allIngresos'
+					className={styles.link}
+				>
+					Ver Todos los Ingresos
+				</Link>
+			</div>
 		</div>
 	);
 }

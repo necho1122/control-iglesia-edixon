@@ -1,15 +1,26 @@
 .container
 {
-    max-width: 600px;
-    margin: auto;
+    width: 100%;
+    max-width: 1200px;
+    margin: 70px auto;
     padding: 20px;
-    background: #f8f8f8;
-    border-radius: 10px;
-    margin-top: 70px;
+    font-family: 'Arial', sans-serif;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
 .container h2
 {
+    text-align: center;
+}
+
+.container h4
+{
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 40px;
     text-align: center;
 }
 
@@ -42,4 +53,67 @@
 .deleteBtn:hover
 {
     background: #cc0000;
+}
+
+.table
+{
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.table th,
+.table td
+{
+    padding: 12px;
+    text-align: left;
+    font-size: 1rem;
+    color: #555;
+}
+
+.table th
+{
+    background-color: #007bff;
+    color: white;
+    font-weight: 600;
+}
+
+.table tr:nth-child(even)
+{
+    background-color: #f9f9f9;
+}
+
+.table tr:hover
+{
+    background-color: #f1f1f1;
+}
+
+/* Responsive Design */
+@media (max-width: 530px)
+{
+    .container
+    {
+        padding: 10px;
+    }
+
+    .table th,
+    .table td
+    {
+        font-size: 0.9rem;
+        padding: 8px;
+    }
+
+    .table
+    {
+        font-size: 0.8rem;
+    }
+
+    .deleteBtn
+    {
+        font-size: 0.8rem;
+        padding: 4px 8px;
+    }
 }

@@ -18,7 +18,7 @@ function Navbar() {
 				<div className={styles.left}>
 					<GodIcon />
 					<p>
-						<span className={styles.title}>Casa de oración FDNP</span>
+						<span className={styles.title}>Casa De Oración FDNP</span>
 					</p>
 				</div>
 

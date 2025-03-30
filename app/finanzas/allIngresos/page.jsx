@@ -3,8 +3,9 @@
 import { useState, useEffect } from 'react';
 import styles from './page.module.css';
 
-export default function EliminarIngreso() {
+export default function AllIngresos() {
 	const [ingresos, setIngresos] = useState([]);
+	const [sortedIngresos, setSortedIngresos] = useState([]);
 
 	useEffect(() => {
 		async function fetchIngresos() {
@@ -14,6 +15,7 @@ export default function EliminarIngreso() {
 
 				const data = await response.json();
 				setIngresos(data);
+				sortByDate(data);
 			} catch (error) {
 				console.error('Error al obtener ingresos:', error);
 			}
@@ -21,6 +23,13 @@ export default function EliminarIngreso() {
 
 		fetchIngresos();
 	}, []);
+
+	const sortByDate = (data) => {
+		const sorted = [...data].sort(
+			(a, b) => new Date(b.fecha) - new Date(a.fecha)
+		);
+		setSortedIngresos(sorted);
+	};
 
 	const eliminarIngreso = async (id) => {
 		if (!confirm('¿Estás seguro de eliminar este ingreso?')) return;
@@ -32,7 +41,9 @@ export default function EliminarIngreso() {
 
 			if (!response.ok) throw new Error('Error al eliminar ingreso');
 
-			setIngresos(ingresos.filter((ingreso) => ingreso.id !== id));
+			const updatedIngresos = ingresos.filter((ingreso) => ingreso.id !== id);
+			setIngresos(updatedIngresos);
+			sortByDate(updatedIngresos);
 			alert('Ingreso eliminado correctamente');
 		} catch (error) {
 			console.error('Error al eliminar:', error);
@@ -42,21 +53,37 @@ export default function EliminarIngreso() {
 
 	return (
 		<div className={styles.container}>
-			<h2>Todos los ingresos</h2>
-			<ul className={styles.list}>
-				{ingresos.map(({ id, descripcion, cantidad, moneda, fecha }) => (
-					<li key={id}>
-						{descripcion} - {cantidad} {moneda} -{' '}
-						{new Date(fecha).toLocaleDateString()}
-						<button
-							onClick={() => eliminarIngreso(id)}
-							className={styles.deleteBtn}
-						>
-							Eliminar
-						</button>
-					</li>
-				))}
-			</ul>
+			<h4>Todos los Ingresos</h4>
+
+			<table className={styles.table}>
+				<thead>
+					<tr>
+						<th>Fecha</th>
+						<th>Moneda</th>
+						<th>Tipo</th>
+						<th>Cantidad</th>
+						<th>Acciones</th>
+					</tr>
+				</thead>
+				<tbody>
+					{sortedIngresos.map(({ id, fecha, moneda, tipo, cantidad }) => (
+						<tr key={id}>
+							<td>{new Date(fecha).toLocaleDateString()}</td>
+							<td>{moneda}</td>
+							<td>{tipo}</td>
+							<td>{cantidad.toFixed(2)}</td>
+							<td>
+								<button
+									onClick={() => eliminarIngreso(id)}
+									className={styles.deleteBtn}
+								>
+									Eliminar
+								</button>
+							</td>
+						</tr>
+					))}
+				</tbody>
+			</table>
 		</div>
 	);
 }
